@@ -64,6 +64,8 @@ def wire_energy_per_unit_length(
     else:
         cap = c_lo + (c_hi - c_lo) * (tech_node - tech_node_lo) / (tech_node_hi - tech_node_lo)
 
+    delay_penalty += 1 # Add in minimum delay
+        
     a = A_CONSTANT
     asq = A_CONSTANT**2
     dpsq = delay_penalty**2
