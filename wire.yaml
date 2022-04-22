@@ -1,0 +1,28 @@
+compound_components:
+  version: 0.3
+  classes:
+  # Model register array as a storage with no address changes
+  # (since we're hard-wired to the correct locations)
+  - name: wire
+    attributes:
+      delay_penalty: delay_penalty
+      technology: 32nm
+
+    subcomponents:
+      - name: wire
+        class: wire
+        attributes:
+          delay_penalty: delay_penalty
+          technology: 32nm
+    actions:
+      - name: energy
+        subcomponents:
+          - name: wire
+            actions:
+              - name: energy
+      - name: energy
+        subcomponents:
+          - name: transfer_random
+            actions:
+              - name: transfer_random
+

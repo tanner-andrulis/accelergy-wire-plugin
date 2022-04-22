@@ -1,0 +1,13 @@
+version: 0.0
+classes:
+  - name: wire
+    actions:
+      - name: energy
+    attributes:
+      none: here_so_list_is_not_empty
+
+  - name: wire
+    actions:
+      - name: transfer_random
+    attributes:
+      none: here_so_list_is_not_empty

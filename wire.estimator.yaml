@@ -1,0 +1,5 @@
+  version: 0.0
+  WireEstimator:
+    module:  accelergywrapper
+    class:   WireEstimator
+    parameter: none
