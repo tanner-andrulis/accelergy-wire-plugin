@@ -14,8 +14,8 @@ pip install .
 ```
     local:
         - name: wire
-            class: wire
-            attributes:
+          class: wire
+          attributes:
             delay_penalty: 1
             technology: 32
 ```
