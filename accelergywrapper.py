@@ -18,7 +18,7 @@ WIRE_NAMES = ['wire', 'Wire']
 WIRE_ACTIONS = ['energy', 'transfer_random']
 
 DEFAULT_SWITCHING_ACTIVITY_FACTOR = 0.15
-DEFAULT_SYSTEM_VOLTAGE = 1
+SWING_VOLTAGE = 0.5
 
 A_CONSTANT = 1.07
 
@@ -43,7 +43,7 @@ def wire_energy_per_unit_length(
     tech_node: Technology node of the design in nm
     delay_penalty: Maximum delay overhead in a fraction of the optimal delay. 0 for min delay,
                    1 for doubled delay, 2 for tripled...
-    voltage: Wire voltage in volts
+    voltage: Wire swing voltage in volts
     switching_activity: Switching activity factor. The probability that a given transmission will
                         flip from 0->1 or 1->0.
     """
@@ -129,7 +129,7 @@ class WireEstimator:
                                               f'a fraction of the optimal delay. Given {attributes}'
 
         if 'voltage' not in attributes:
-            print(f'WARNING: Voltage not specified for wire. Assuming {DEFAULT_SYSTEM_VOLTAGE}V')
+            print(f'WARNING: Voltage not specified for wire. Assuming swing voltage {DEFAULT_SYSTEM_VOLTAGE}V')
         if 'switching_activity' not in attributes:
             print(f'WARNING: Switching activity not specified for wire. ' \
                   f'Assuming {DEFAULT_SWITCHING_ACTIVITY_FACTOR}')
