@@ -22,16 +22,16 @@ SWING_VOLTAGE = 0.5
 
 A_CONSTANT = 1.07
 
-WIRE_CAP_PER_UNIT_LENGTH = { #Ff/mm to match Timeloop expectations
-    180: 440,
-    130: 430,
-    100: 403,
-    70:  367,
-    50:  345,
-    35:  315,
-    25:  288,
-    18:  266,
-    13:  247,
+WIRE_CAP_PER_UNIT_LENGTH = { #pf/mm to match Timeloop expectations
+    180: .440,
+    130: .430,
+    100: .403,
+    70:  .367,
+    50:  .345,
+    35:  .315,
+    25:  .288,
+    18:  .266,
+    13:  .247,
 }
 MIN_TECHNODE = min(WIRE_CAP_PER_UNIT_LENGTH.keys())
 MAX_TECHNODE = max(WIRE_CAP_PER_UNIT_LENGTH.keys())
@@ -72,8 +72,13 @@ def wire_energy_per_unit_length(
 
     dp_a_prod1 = asq - 2 * a * dpsq - dpsq + 1
     # The product of two design knobs on the wire energy and delay penalty
-    # This gives values on the mininum energy and delay penalty Pareto curve
+    # This gives values on the mininum energy and delay penalty Pareto curve    
     x_prod = (asq * dpsq - sqrt((-asq * dpsq + dp_a_prod1) ** 2 - 4 * asq) - (dp_a_prod1)) / (2 * a)
+
+    # print(f'Voltage**2: {voltage**2}')
+    # print(f'Cap: {cap}')
+    # print(f'1+x_prod: {1+x_prod}')
+    # print(f'A_CONSTANT: {A_CONSTANT}')
 
     return switching_activity * voltage**2 * cap * (1+ x_prod * A_CONSTANT)
 
@@ -99,7 +104,8 @@ class WireEstimator:
         """
         class_name = interface['class_name']
         action_name = interface['action_name']
-        print('Asked me for support for {} {}'.format(class_name, action_name))
+        #print('Asked me for support for {} {}'.format(class_name, action_name))
+        #print(str(class_name).lower() in WIRE_NAMES and str(action_name).lower() in WIRE_ACTIONS)
         if str(class_name).lower() in WIRE_NAMES and str(action_name).lower() in WIRE_ACTIONS:
             return ENERGY_ACCURACY
 
@@ -120,8 +126,6 @@ class WireEstimator:
         attributes = interface['attributes']
         action_name = interface['action_name']
 
-        if str(class_name).lower() in WIRE_NAMES and str(action_name).lower() in WIRE_ACTIONS:
-            return ENERGY_ACCURACY
         assert 'technology' in attributes, f'Technology node not specified for wire. Please ' \
                                            f'provide a technology node in nm. Given {attributes}'
         assert 'delay_penalty' in attributes, f'Delay penalty not specified for wire. Please ' \
@@ -129,7 +133,7 @@ class WireEstimator:
                                               f'a fraction of the optimal delay. Given {attributes}'
 
         if 'voltage' not in attributes:
-            print(f'WARNING: Voltage not specified for wire. Assuming swing voltage {DEFAULT_SYSTEM_VOLTAGE}V')
+            print(f'WARNING: Voltage not specified for wire. Assuming swing voltage {SWING_VOLTAGE}V')
         if 'switching_activity' not in attributes:
             print(f'WARNING: Switching activity not specified for wire. ' \
                   f'Assuming {DEFAULT_SWITCHING_ACTIVITY_FACTOR}')
@@ -137,7 +141,7 @@ class WireEstimator:
         return wire_energy_per_unit_length(
             attributes['technology'], 
             attributes['delay_penalty'], 
-            attributes.get('voltage', DEFAULT_SYSTEM_VOLTAGE),
+            attributes.get('voltage', SWING_VOLTAGE),
             attributes.get('switching_activity', DEFAULT_SWITCHING_ACTIVITY_FACTOR)
         )
 
