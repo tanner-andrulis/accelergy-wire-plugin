@@ -133,10 +133,10 @@ class WireEstimator:
                                               f'a fraction of the optimal delay. Given {attributes}'
 
         if 'voltage' not in attributes:
-            print(f'WARNING: Voltage not specified for wire. Assuming swing voltage {SWING_VOLTAGE}V')
+            print(f'WARNING: Swing voltage not specified for wire. Assuming voltage={SWING_VOLTAGE}V')
         if 'switching_activity' not in attributes:
             print(f'WARNING: Switching activity not specified for wire. ' \
-                  f'Assuming {DEFAULT_SWITCHING_ACTIVITY_FACTOR}')
+                  f'Assuming switching_activity={DEFAULT_SWITCHING_ACTIVITY_FACTOR}')
 
         return wire_energy_per_unit_length(
             attributes['technology'], 
