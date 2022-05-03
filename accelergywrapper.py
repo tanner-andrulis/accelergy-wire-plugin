@@ -1,8 +1,16 @@
 """
-AAAAAAAAAAAAAAAAAAAA
-We should really put our citations here
+Formula based on
+    K. Banerjee and A. Mehrotra, “A power-optimal repeater insertion methodology
+    for global interconnects in nanometer designs,” IEEE Transactions on Electron
+    Devices, vol. 49, no. 11, pp. 2001–2007, 2002
 
-Also need to put author names and emails in setup
+Wire capacitance per unit length from 
+    R. Ho, T. Ono, R. D. Hopkins, A. Chow, J. Schauer, F. Y. Liu, and
+    R. Drost, “High speed and low energy capacitively driven on-chip wires,”
+    IEEE Journal of Solid-State Circuits, vol. 43, no. 1, pp. 52–60, 2008
+
+Plugin by:
+Tanner Andrulis, Jamie Koerner, Brandon Yue
 
 """
 
