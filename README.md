@@ -1,6 +1,8 @@
 ## **Interconnect plugin V1**
 This plugin simulates data transmission energy in on-chip wires in the Accelergy+Timeloop infrastructure. State of the art accelerators may consume up to 5% of overall system energy moving data through on-chip wiring, so modeling all components of the system is vital for tools such as Accelergy+Timeloop to find optimal accelerator designs and workload mappings.
 
+The best part: *You can install this in your architecture in five minutes or less!*
+
 This plugin uses the equations in [1] to simulate the transfer energy in networks and between local buffers. Networking energy is determined by the length of NoC wires, while inter-buffer data movement energy is determined assuming data traverses entire components according to Accelergy's area model.
 
 The primitive component is "wire" class. Wires take four parameters: delay penalty, technology, switching activity and swing voltage.
@@ -13,12 +15,12 @@ Switching activity is the probability that a wire will flip from a 0 to 1 or a 1
 
 
 
-# Intall me:
+# Installation
 We install automatically via pip. From inside this directory, run
 ```
 pip install .
 ```
-# Run me:
+# Running
 Under the "local" heading of highest architecture level of any architecture specification in Timeloop+Accelergy, add the following component. This will instantiate a wire primitive component for use by Timeloop.
 ```
 local:
