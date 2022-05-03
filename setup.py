@@ -17,7 +17,7 @@ setup(
         'Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)',
       ],
       keywords='accelerator hardware energy estimation analog adc',
-      author='',
+      author='Tanner Andrulis, Jamie Koerner, Brandon Yue',
       author_email='',
       license='MIT',
       install_requires = [],
