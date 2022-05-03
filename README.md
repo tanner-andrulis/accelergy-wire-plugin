@@ -24,5 +24,5 @@ Under the "local" heading of highest architecture level of any architecture spec
                                       #           Sw_Activity = (P)(1-P).
 ```
 
-References:
+# References:
 [1] K. Banerjee and A. Mehrotra, “A power-optimal repeater insertion methodology for global interconnects in nanometer designs,” IEEE Transactions on Electron Devices, vol. 49, no. 11, pp. 2001–2007, 2002
